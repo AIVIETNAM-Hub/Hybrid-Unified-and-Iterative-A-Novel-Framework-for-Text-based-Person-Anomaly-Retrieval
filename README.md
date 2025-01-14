@@ -100,7 +100,7 @@ Our LHP model fine-tune on [beit3_large_patch16_384_coco_retrieval.pth](https://
 
 [beit3.spm](https://github.com/addf400/files/releases/download/beit3/beit3.spm) is the sentencepiece model used for tokenizing texts.
 ```
-cd ./lhp/beit3
+cd ./lhp_2/beit3
 
 CUDA_VISIBLE_DEVICES=0 python3 run_beit3_finetuning.py \
     --model beit3_large_patch16_384 \
@@ -173,7 +173,7 @@ Secondly, to make iterative ensemble, you can run iteartively each model in the 
 
 #### For LHP model:
 ```
-python3 ./lhp/beit3/inference.py --checkpoint ./checkpoint/lhp/lhp_beit3.pth \
+python3 ./lhp_2/beit3/inference.py --checkpoint ./checkpoint/lhp/lhp_beit3.pth \
                                 --tokenizer ./checkpoint/lhp/beit3.spm \
                                 --image_folder ./data/PAB/name-masked_test-set/gallery \
                                 --save_score ./sims_score/score_beit3_reproduce.pt \
