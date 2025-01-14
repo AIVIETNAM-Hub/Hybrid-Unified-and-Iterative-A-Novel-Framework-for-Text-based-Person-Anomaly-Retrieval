@@ -1,13 +1,10 @@
-<<<<<<< HEAD
-# Hybrid-Unified-and-Iterative-A-Novel-Framework-for-Text-based-Person-Anomaly-Retrieval
-=======
 ## Contributors:
 Hybrid-Unified-and-Iterative-A-Novel-Framework-for-Text-based-Person-Anomaly-Retrieval
 
 Authors: Tien-Huy Nguyen, Huu-Loc Tran,Huu-Phong Phan-Nguyen, Quang-Vinh Dinh
 
 ## News
-- [01/21/2025] Check out our checkpoints, fine-tuned on PAB dataset, now available on [Link]. 
+- [01/14/2025] Check out our checkpoints, fine-tuned on PAB dataset, now available on [Link](https://drive.google.com/drive/u/5/folders/1M-qqoDk8oQ_AERnRgdx5NC5cFCXskLd9?fbclid=IwZXh0bgNhZW0CMTAAAR3zjJUlyFKtDgEhNwNUraDtYmWmq_--QzM_FY1yOBFIpFnocaEtsQ8J5is_aem_BnPIz4Nn94SxPCUMwq3Brw). 
 
 - [01/14/2025] We decided to open source to research community, ensuring re-produce our method and helping them improve our baseline in the future.
 
@@ -149,9 +146,10 @@ Download the BERT base uncased model:  [bert-base-uncased](https://huggingface.c
 
 **Organizing the `checkpoint` Folder**
 
-Once downloaded, organize the files in the `checkpoint` folder as follows:
+Once downloaded, organize the files in the `checkpoint` folder in uit folder as follows:
 
 ```
+
 └── checkpoint/
     └── pretrained.pth
     └── bert-base-uncased/
@@ -160,9 +158,9 @@ Once downloaded, organize the files in the `checkpoint` folder as follows:
 
 ```
 cd ./uit/cmp
-python3 run.py --task "cmp" 
-                --dist "f4" 
-                --output_dir "output/cmp"
+python3 run.py --task "cmp" \
+                --dist "f4" \
+                --output_dir "output/cmp" 
 ```
 
 
@@ -175,44 +173,44 @@ Secondly, to make iterative ensemble, you can run iteartively each model in the 
 
 #### For LHP model:
 ```
-python3 ./lhp/beit3/inference.py --checkpoint ./checkpoint/lhp/lhp_beit3.pth 
-                                --tokenizer ./checkpoint/lhp/beit3.spm 
-                                --image_folder ./data/PAB/name-masked_test-set/gallery 
-                                --save_score ./sims_score/score_beit3_reproduce.pt  
-                                --annotation ./data/PAB/name-masked_test-set/query.json 
-                                --output_file ./predictions/score_beit3_reproduce.txt
+python3 ./lhp/beit3/inference.py --checkpoint ./checkpoint/lhp/lhp_beit3.pth \
+                                --tokenizer ./checkpoint/lhp/beit3.spm \
+                                --image_folder ./data/PAB/name-masked_test-set/gallery \
+                                --save_score ./sims_score/score_beit3_reproduce.pt \
+                                --annotation ./data/PAB/name-masked_test-set/query.json \ 
+                                --output_file ./predictions/score_beit3_reproduce.txt 
 ```
 
 #### For BLIP2 model:
 ```
-python3 ./blip2_infer.py --image_folder ./data/PAB/name-masked_test-set/gallery
-                        --annotation ./data/PAB/name-masked_test-set/query.json
-                        --save_score ./sims_score/score_blip2_reproduce.pt
-                        --output_file ./predictions/score_blip2_reproduce.txt
+python3 ./blip2_infer.py --image_folder ./data/PAB/name-masked_test-set/gallery \
+                        --annotation ./data/PAB/name-masked_test-set/query.json \
+                        --save_score ./sims_score/score_blip2_reproduce.pt \
+                        --output_file ./predictions/score_blip2_reproduce.txt 
 ```
 
 #### For CLIP model:
 ```
-python3 ./clip_infer.py --image_folder ./data/PAB/name-masked_test-set/gallery
-                    --annotation ./data/PAB/name-masked_test-set/query.json
-                    --save_score ./sims_score/score_clip_reproduce.pt 
-                    --output_file ./predictions/score_clip_reproduce.txt      
+python3 ./clip_infer.py --image_folder ./data/PAB/name-masked_test-set/gallery \
+                    --annotation ./data/PAB/name-masked_test-set/query.json \
+                    --save_score ./sims_score/score_clip_reproduce.pt \
+                    --output_file ./predictions/score_clip_reproduce.txt  
 ```
 
 
 Finally, run iterative ensemble:
 
 ```
-python3 uit/cmp/inference.py --config uit/cmp/configs/infer.yaml 
-                                    --task cmp 
-                                    --output_dir output 
-                                    --checkpoint ./checkpoint/uit/uit.pth 
-                                    --output_file reproduce.txt 
-                                    --beit3_weight 0.925 
-                                    --beit3_score ./sims_score/score_beit3_reproduce.pt 
-                                    --blip2_weight 0.9 
-                                    --blip2_score ./sims_score/score_blip2_reproduce.pt 
-                                    --clip_weight 0.9 
+python3 uit/cmp/inference.py --config uit/cmp/configs/infer.yaml \
+                                    --task cmp \
+                                    --output_dir output \
+                                    --checkpoint ./checkpoint/uit/uit.pth \
+                                    --output_file reproduce.txt \
+                                    --beit3_weight 0.925 \
+                                    --beit3_score ./sims_score/score_beit3_reproduce.pt \
+                                    --blip2_weight 0.9 \
+                                    --blip2_score ./sims_score/score_blip2_reproduce.pt \
+                                    --clip_weight 0.9 \
                                     --clip_score ./sims_score/score_clip_reproduce.pt 
 ```
 
@@ -235,4 +233,5 @@ If you find this repository useful, please use the following BibTeX entry for ci
 ## License
 
 This project is released under the MIT license. 
->>>>>>> master
+
+
