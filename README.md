@@ -48,26 +48,53 @@ pip3 install -r requirements_uit.txt
 
 ## Folder Directory
 
-The directory structures in our work is as follows
+The directory structures in our work is as follows:
 ```
-data/PAB/
 pab/
 └── data/
     └── PAB/
         └── annotation/
+            └── train/
+                └── pair_0.json
+                └── ...
+            └── test/
+                └── pair.json
         └── name-masked_test-set/
+            └── gallery/
+                └── 0.jpg
+                └── ...
+            └── query.json
         └── train/
+            └── imgs_0/
+                └── goal/
+                    └── 0.jpg
+                    └── ...
+                └── wentwrong/
+                └── full/
+            └── imgs_1/
+            └── ...
     └── blip/
-    └── beit3/
+    └── lhp/
+        └── beit3/
+    └── uit/
+        └── cmp/
     └── checkpoint/
-    └── ...
+        └── lhp
+        └── uit
+    └── predictions
+    └── sims_score
+└── README.md
+└── requirements_lhp.txt
+└── requirements_uit.txt
+└── blip2_infer.py
+└── clip_infer.py
 ```
 
 ## Training
 
 #### Finetuning LHP model:
 ```
-cd ./unilm/beit3
+cd ./lhp/beit3
 
 CUDA_VISIBLE_DEVICES=0 python3 run_beit3_finetuning.py \
     --model beit3_large_patch16_384 \
@@ -94,7 +121,7 @@ CUDA_VISIBLE_DEVICES=0 python3 run_beit3_finetuning.py \
 
 #### Finetuning UIT model:
 ```
-cd ./WWW2025Workshop_mimcode/CMP_Baseline_Code
+cd ./uit/cmp
 python3 run.py --task "cmp" 
                 --dist "f4" 
                 --output_dir "output/cmp"
@@ -110,30 +137,38 @@ Secondly, to make iterative ensemble, you can run iteartively each model in the 
 
 #### For LHP model:
 ```
-python3 ./unilm/beit3/inference.py --checkpoint ./checkpoint/lhp/lhp_beit3.pth 
+python3 ./lhp/beit3/inference.py --checkpoint ./checkpoint/lhp/lhp_beit3.pth 
                                 --tokenizer ./checkpoint/lhp/beit3.spm 
-                                --image_folder ./data/PAB/name-masked_test-set/gallery --annotation ./data/PAB/name-masked_test-set/query.json --save_score ./sims_score/score_beit3_reproduce.pt  --output_file ./predictions/score_beit3_reproduce.txt
+                                --image_folder ./data/PAB/name-masked_test-set/gallery 
+                                --save_score ./sims_score/score_beit3_reproduce.pt  
+                                --annotation ./data/PAB/name-masked_test-set/query.json 
+                                --output_file ./predictions/score_beit3_reproduce.txt
 ```
 
 #### For BLIP2 model:
 ```
-python3 ./blip2_infer.py --image_folder ./data/PAB/name-masked_test-set/gallery                 --annotation ./data/PAB/name-masked_test-set/query.json                    --save_score ./sims_score/score_blip2_reproduce.pt                      --output_file ./predictions/score_blip2.txt
+python3 ./blip2_infer.py --image_folder ./data/PAB/name-masked_test-set/gallery
+                        --annotation ./data/PAB/name-masked_test-set/query.json
+                        --save_score ./sims_score/score_blip2_reproduce.pt
+                        --output_file ./predictions/score_blip2_reproduce.txt
 ```
 
 #### For CLIP model:
 ```
-python3 ./clip_infer.py --image_folder ./data/PAB/name-masked_test-set/gallery              --annotation ./data/PAB/name-masked_test-set/query.json                 --save_score ./sims_score/score_clip_reproduce.pt 
-                     --output_file ./predictions/score_clip.txt
+python3 ./clip_infer.py --image_folder ./data/PAB/name-masked_test-set/gallery
+                    --annotation ./data/PAB/name-masked_test-set/query.json
+                    --save_score ./sims_score/score_clip_reproduce.pt 
+                    --output_file ./predictions/score_clip_reproduce.txt      
 ```
 
 
 Finally, run iterative ensemble:
 
 ```
-python3 WWW2025Workshop_mimcode/CMP_Baseline_Code/inference.py --config WWW2025Workshop_mimcode/CMP_Baseline_Code/configs/infer.yaml 
+python3 uit/cmp/inference.py --config uit/cmp/configs/infer.yaml 
                                     --task cmp 
                                     --output_dir output 
-                                    --checkpoint ./checkpoint/mim/mim.pth 
+                                    --checkpoint ./checkpoint/uit/uit.pth 
                                     --output_file reproduce.txt 
                                     --beit3_weight 0.925 
                                     --beit3_score ./sims_score/score_beit3_reproduce.pt 
@@ -143,3 +178,22 @@ python3 WWW2025Workshop_mimcode/CMP_Baseline_Code/inference.py --config WWW2025W
                                     --clip_score ./sims_score/score_clip_reproduce.pt 
 ```
 
+
+## Citation 
+If you find this repository useful, please use the following BibTeX entry for citation.
+
+```
+@misc{key,
+	author = {},
+	title = {},
+	howpublished = {\url{https://github.com/AIVIETNAM-Hub/Hybrid-Unified-and-Iterative-A-Novel-Framework-for-Text-based-Person-Anomaly-Retrieval}},
+	year = {},
+	note = {[Accessed 15-01-2025]},
+}
+```
+
+
+
+## License
+
+This project is released under the MIT license. 
