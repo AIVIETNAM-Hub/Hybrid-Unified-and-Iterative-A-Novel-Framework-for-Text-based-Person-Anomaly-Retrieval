@@ -93,6 +93,12 @@ pab/
 ## Training
 
 #### Finetuning LHP model:
+
+###### Downloading checkpoints and tokenizer:
+
+Our LHP model fine-tune on [beit3_large_patch16_384_coco_retrieval.pth](https://github.com/addf400/files/releases/download/beit3/beit3_large_patch16_384_coco_retrieval.pth). 
+
+[beit3.spm](https://github.com/addf400/files/releases/download/beit3/beit3.spm) is the sentencepiece model used for tokenizing texts.
 ```
 cd ./lhp/beit3
 
@@ -120,6 +126,35 @@ CUDA_VISIBLE_DEVICES=0 python3 run_beit3_finetuning.py \
 ```
 
 #### Finetuning UIT model:
+
+###### **Download Pre-trained Models for Parameter Initialization**
+
+You can initialize parameters using pre-trained models. Choose one of the following methods:
+
+---
+**Option 1: Initialize from a Text-Based Person Search Pre-trained Model**
+Download the pre-trained model:  [pretrained.pth](https://drive.google.com/file/d/1KffesfZD45kOQH2E4G31Sd3rbj9djD3d/view?usp=sharing)
+
+---
+
+**Option 2: Initialize the Image Encoder and Text Encoder Separately**
+Download the Swin Transformer base model:   [swin-transformer-base](https://github.com/SwinTransformer/storage/releases/download/v1.0.0/swin_base_patch4_window7_224_22k.pth)
+
+Download the BERT base uncased model:  [bert-base-uncased](https://huggingface.co/bert-base-uncased/tree/main)
+
+---
+
+**Organizing the `checkpoint` Folder**
+
+Once downloaded, organize the files in the `checkpoint` folder as follows:
+
+```
+└── checkpoint/
+    └── pretrained.pth
+    └── bert-base-uncased/
+    └── swin_base_patch4_window7_224_22k.pth
+```
+
 ```
 cd ./uit/cmp
 python3 run.py --task "cmp" 
