@@ -130,7 +130,7 @@ def mAP(scores_t2i, g_pids, q_pids, table=None):
     pred_labels = g_pids[indices.cpu()]  # q * k
     matches = pred_labels.eq(q_pids.view(-1, 1))  # q * k
 
-    all_cmc = matches[:, :10].cumsum(1)  # cumulative sum
+    all_cmc = matches[:, :10].cumsum(1)
     all_cmc[all_cmc > 1] = 1
     all_cmc = all_cmc.float().mean(0) * 100
 

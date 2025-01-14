@@ -46,10 +46,8 @@ def create_scheduler(args, optimizer):
         print('Load cosine')
         def lr_lambda(current_step, warmup_steps, total_steps, min_lr=1e-5, max_lr=1e-4):
             if current_step < warmup_steps:
-                # Warmup phase: tăng lr tuyến tính từ 0 lên max_lr
                 return current_step / warmup_steps
             else:
-                # Cosine Annealing phase: giảm lr từ max_lr về min_lr
                 progress = (current_step - warmup_steps) / (total_steps - warmup_steps)
                 cosine_decay = 0.5 * (1 + math.cos(math.pi * progress))
                 return (cosine_decay * (max_lr - min_lr) + min_lr) / max_lr

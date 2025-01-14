@@ -17,21 +17,6 @@ print("NPROC_PER_NODE, ", NPROC_PER_NODE)
 
 
 def get_dist_launch(args):
-    # if args.dist == 'f4':
-    #     return "CUDA_VISIBLE_DEVICES=0,1,2,3 WORLD_SIZE=4 python3 -m torch.distributed.run --nproc_per_node=4 " \
-    #            "--nnodes={:} --node_rank={:} " \
-    #            "--master_addr={:} --master_port={:} ".format(NNODES, NODE_RANK, MASTER_ADDR, MASTER_PORT)
-    # elif args.dist == 'f3':
-    #     return "CUDA_VISIBLE_DEVICES=1,2,3 WORLD_SIZE=3 python3 -m torch.distributed.run --nproc_per_node=3 " \
-    #            "--nnodes={:} --node_rank={:} " \
-    #            "--master_addr={:} --master_port={:} ".format(NNODES, NODE_RANK, MASTER_ADDR, MASTER_PORT)
-    # elif args.dist.startswith('gpu'):  # use one gpu, --dist "gpu0"
-    #     num = int(args.dist[3:])
-    #     return "CUDA_VISIBLE_DEVICES={:} WORLD_SIZE=1 python3 -m torch.distributed.run --nproc_per_node=1 " \
-    #            "--nnodes={:} --node_rank={:} " \
-    #            "--master_addr={:} --master_port={:} ".format(num, NNODES, NODE_RANK, MASTER_ADDR, MASTER_PORT)
-    # else:
-    #     raise ValueError
     num = 0
     return "CUDA_VISIBLE_DEVICES={:} WORLD_SIZE=1 python3 -m torch.distributed.run --nproc_per_node=1 " \
                "--nnodes={:} --node_rank={:} " \

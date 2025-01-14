@@ -101,7 +101,6 @@ def train_model(model, data_loader, optimizer, scaler, tokenizer, epoch, device,
     
     with open(f'{log_folder}/{epoch+1}.json', 'w') as f:
         json.dump(log_list, f, indent=4)
-    # gather the stats from all processes
     metric_logger.synchronize_between_processes()
     print("Averaged stats:", metric_logger.global_avg())
     return {k: "{:.5f}".format(meter.global_avg) for k, meter in metric_logger.meters.items()}
