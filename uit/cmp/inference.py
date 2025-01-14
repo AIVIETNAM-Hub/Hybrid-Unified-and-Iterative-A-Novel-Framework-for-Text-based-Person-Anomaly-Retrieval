@@ -75,8 +75,8 @@ def main(args, config):
 
     similarity = torch.tensor(score_test_t2i)
     indices = torch.argsort(similarity, dim=1, descending=True)
-    print(indices.shape)
-    print(indices)
+    # print(indices.shape)
+    # print(indices)
     
     # Get the top 10 indices
     top_10_indices = indices[:, :10]
