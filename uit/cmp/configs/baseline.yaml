@@ -1,0 +1,60 @@
+image_root: '../../data/PAB/'
+test_file: '../../data/PAB/annotation/test/pair.json'
+
+train_file:  [
+	'../../data/PAB/annotation/train/pair_0.json', '../../data/PAB/annotation/train/pair_1.json',
+	'../../data/PAB/annotation/train/pair_2.json', '../../data/PAB/annotation/train/pair_3.json',
+	'../../data/PAB/annotation/train/pair_4.json', '../../data/PAB/annotation/train/pair_5.json',
+	'../../data/PAB/annotation/train/pair_6.json', '../../data/PAB/annotation/train/pair_7.json',
+]
+
+
+## Image Encoder
+vision_config: 'configs/config_swinB.json'
+h: 224
+w: 224
+
+## Text Encoder
+text_config: 'configs/config_bert.json'
+text_encoder: 'checkpoint/bert-base-uncased'
+
+## MIM
+config_mim: 'configs/config_swinBmim.yaml'
+
+## Training
+load_params_text: False
+load_params_vision: True
+load_pretrained: True
+
+max_words: 56
+max_tokens: 56
+eda_p: 1
+erasing_p: 0.6
+
+batch_size_train: 84
+batch_size_test: 84
+batch_size_test_text: 150
+
+embed_dim: 2048
+itc_dp: 0.5
+temp: 0.07
+label_smooth: 0.2
+
+## mlm loss
+mask_prob: 0.25
+max_masks: 10
+skipgram_prb: 0.2
+skipgram_size: 3
+mask_whole_word: True
+
+optimizer: {opt: adamW, lr: 1e-4, weight_decay: 0.01, lr_mult: 2}
+schedular: {sched: step, lr: 1e-4, epochs: 30, num_warmup_steps: 500}
+
+k_test: 128
+
+
+be_hard: True
+be_pose_img: True
+
+
+

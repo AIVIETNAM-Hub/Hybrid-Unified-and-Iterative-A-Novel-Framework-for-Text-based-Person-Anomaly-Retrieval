@@ -1,0 +1,70 @@
+batch_size_test: 84
+batch_size_test_text: 150
+batch_size_train: 84
+be_hard: true
+be_pose_img: true
+config_mim: configs/config_swinBmim.yaml
+eda_p: 1
+embed_dim: 2048
+erasing_p: 0.6
+h: 224
+image_root: ../../data/PAB/
+itc_dp: 0.5
+k_test: 128
+label_smooth: 0.2
+load_params_text: false
+load_params_vision: true
+load_pretrained: true
+mask_prob: 0.25
+mask_whole_word: true
+max_masks: 10
+max_tokens: 56
+max_words: 56
+optimizer: {lr: 0.0001, lr_mult: 2, opt: adamW, weight_decay: 0.01}
+schedular: {epochs: 30, lr: 0.0001, num_warmup_steps: 500, sched: step}
+skipgram_prb: 0.2
+skipgram_size: 3
+temp: 0.07
+test_file: ../../data/PAB/annotation/test/pair.json
+text_config: configs/config_bert.json
+text_encoder: checkpoint/bert-base-uncased
+train_file: [../../data/PAB/annotation/train/pair_0.json, ../../data/PAB/annotation/train/pair_1.json,
+  ../../data/PAB/annotation/train/pair_2.json, ../../data/PAB/annotation/train/pair_3.json,
+  ../../data/PAB/annotation/train/pair_4.json, ../../data/PAB/annotation/train/pair_5.json,
+  ../../data/PAB/annotation/train/pair_6.json, ../../data/PAB/annotation/train/pair_7.json,
+  ../../data/PAB/annotation/train/pair_8.json, ../../data/PAB/annotation/train/pair_9.json,
+  ../../data/PAB/annotation/train/pair_10.json, ../../data/PAB/annotation/train/pair_11.json,
+  ../../data/PAB/annotation/train/pair_12.json, ../../data/PAB/annotation/train/pair_13.json,
+  ../../data/PAB/annotation/train/pair_14.json, ../../data/PAB/annotation/train/pair_15.json,
+  ../../data/PAB/annotation/train/pair_16.json, ../../data/PAB/annotation/train/pair_17.json,
+  ../../data/PAB/annotation/train/pair_18.json, ../../data/PAB/annotation/train/pair_19.json,
+  ../../data/PAB/annotation/train/pair_20.json, ../../data/PAB/annotation/train/pair_21.json,
+  ../../data/PAB/annotation/train/pair_22.json, ../../data/PAB/annotation/train/pair_23.json,
+  ../../data/PAB/annotation/train/pair_24.json, ../../data/PAB/annotation/train/pair_25.json,
+  ../../data/PAB/annotation/train/pair_26.json, ../../data/PAB/annotation/train/pair_27.json,
+  ../../data/PAB/annotation/train/pair_28.json, ../../data/PAB/annotation/train/pair_29.json,
+  ../../data/PAB/annotation/train/pair_30.json, ../../data/PAB/annotation/train/pair_31.json,
+  ../../data/PAB/annotation/train/pair_32.json, ../../data/PAB/annotation/train/pair_33.json,
+  ../../data/PAB/annotation/train/pair_34.json, ../../data/PAB/annotation/train/pair_35.json,
+  ../../data/PAB/annotation/train/pair_36.json, ../../data/PAB/annotation/train/pair_37.json,
+  ../../data/PAB/annotation/train/pair_38.json, ../../data/PAB/annotation/train/pair_39.json,
+  ../../data/PAB/annotation/train/pair_40.json, ../../data/PAB/annotation/train/pair_41.json,
+  ../../data/PAB/annotation/train/pair_42.json, ../../data/PAB/annotation/train/pair_43.json,
+  ../../data/PAB/annotation/train/pair_44.json, ../../data/PAB/annotation/train/pair_45.json,
+  ../../data/PAB/annotation/train/pair_46.json, ../../data/PAB/annotation/train/pair_47.json,
+  ../../data/PAB/annotation/train/pair_48.json, ../../data/PAB/annotation/train/pair_49.json,
+  ../../data/PAB/annotation/train/pair_50.json, ../../data/PAB/annotation/train/pair_51.json,
+  ../../data/PAB/annotation/train/pair_52.json, ../../data/PAB/annotation/train/pair_53.json,
+  ../../data/PAB/annotation/train/pair_54.json, ../../data/PAB/annotation/train/pair_55.json,
+  ../../data/PAB/annotation/train/pair_56.json, ../../data/PAB/annotation/train/pair_57.json,
+  ../../data/PAB/annotation/train/pair_58.json, ../../data/PAB/annotation/train/pair_59.json,
+  ../../data/PAB/annotation/train/pair_60.json, ../../data/PAB/annotation/train/pair_61.json,
+  ../../data/PAB/annotation/train/pair_62.json, ../../data/PAB/annotation/train/pair_63.json,
+  ../../data/PAB/annotation/train/pair_64.json, ../../data/PAB/annotation/train/pair_65.json,
+  ../../data/PAB/annotation/train/pair_66.json, ../../data/PAB/annotation/train/pair_67.json,
+  ../../data/PAB/annotation/train/pair_68.json, ../../data/PAB/annotation/train/pair_69.json,
+  ../../data/PAB/annotation/train/pair_70.json, ../../data/PAB/annotation/train/pair_71.json,
+  ../../data/PAB/annotation/train/pair_72.json, ../../data/PAB/annotation/train/pair_73.json,
+  ../../data/PAB/annotation/train/pair_74.json]
+vision_config: configs/config_swinB.json
+w: 224
