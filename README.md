@@ -215,6 +215,13 @@ python3 uit/cmp/inference.py --config uit/cmp/configs/infer.yaml \
                                     --clip_score ./sims_score/score_clip_reproduce.pt 
 ```
 
+## Run the app demo:
+```
+conda activate lhp
+pip install streamlit faiss-cpu
+streamlit run app.ppy
+```
+
 
 ## Citation 
 If you find this repository useful, please use the following BibTeX entry for citation.
