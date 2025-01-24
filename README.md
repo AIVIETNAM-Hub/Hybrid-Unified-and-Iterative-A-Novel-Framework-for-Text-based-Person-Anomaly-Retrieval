@@ -219,12 +219,13 @@ python3 uit/cmp/inference.py --config uit/cmp/configs/infer.yaml \
 If you find this repository useful, please use the following BibTeX entry for citation.
 
 ```
-@misc{key,
-	author = {},
-	title = {},
-	howpublished = {\url{https://github.com/AIVIETNAM-Hub/Hybrid-Unified-and-Iterative-A-Novel-Framework-for-Text-based-Person-Anomaly-Retrieval}},
-	year = {},
-	note = {[Accessed 15-01-2025]},
+@inproceedings{
+nguyen2025hybrid,
+title={Hybrid, Unified and Iterative: A Novel Framework for Text-based Person Anomaly Retrieval},
+author={Tien-Huy Nguyen and Huu-Loc Tran and Huu-Phong Phan-Nguyen and Vinh Quang Dinh},
+booktitle={The Web Conference Workshop on Multimedia Object Re-ID: Advancements, Challenges, and Opportunities (MORE 2025)},
+year={2025},
+url={https://openreview.net/forum?id=Uu6GnzDghb}
 }
 ```
 
