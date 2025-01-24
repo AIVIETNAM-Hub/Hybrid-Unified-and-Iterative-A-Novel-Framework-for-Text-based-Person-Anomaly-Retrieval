@@ -4,7 +4,7 @@ Hybrid-Unified-and-Iterative-A-Novel-Framework-for-Text-based-Person-Anomaly-Ret
 Authors: Tien-Huy Nguyen, Huu-Loc Tran,Huu-Phong Phan-Nguyen, Quang-Vinh Dinh
 
 ## News
-- [01/14/2025] Check out our checkpoints, fine-tuned on PAB dataset, now available on [[Link](https://drive.google.com/drive/u/5/folders/1M-qqoDk8oQ_AERnRgdx5NC5cFCXskLd9?fbclid=IwZXh0bgNhZW0CMTAAAR3zjJUlyFKtDgEhNwNUraDtYmWmq_--QzM_FY1yOBFIpFnocaEtsQ8J5is_aem_BnPIz4Nn94SxPCUMwq3Brw)]. 
+- [01/14/2025] Check out our checkpoints, fine-tuned on PAB dataset, now available on [[Link](https://forms.gle/X2yX7Y4W6pVdo7pH9)]. 
 
 - [01/14/2025] We decided to open source to research community, ensuring re-produce our method and helping them improve our baseline in the future.
 
