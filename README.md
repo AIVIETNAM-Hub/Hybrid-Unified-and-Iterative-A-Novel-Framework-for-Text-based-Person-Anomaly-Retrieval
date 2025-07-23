@@ -1,5 +1,5 @@
 ## Contributors:
-Hybrid-Unified-and-Iterative-A-Novel-Framework-for-Text-based-Person-Anomaly-Retrieval
+Hybrid-Unified-and-Iterative-A-Novel-Framework-for-Text-based-Person-Anomaly-Retrieval [[Link](https://dl.acm.org/doi/10.1145/3701716.3717653)]
 
 Authors: Tien-Huy Nguyen, Huu-Loc Tran,Huu-Phong Phan-Nguyen, Quang-Vinh Dinh
 
